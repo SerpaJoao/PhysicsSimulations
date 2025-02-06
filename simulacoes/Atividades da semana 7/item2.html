@@ -1,0 +1,21 @@
+<script>
+
+  var input = window.prompt("Digite três números entre 0 e 255 no formato n1,n2,n3");
+  var num = input.split(",");
+
+  var str = "";
+  num[0] = parseInt(num[0], 10).toString(16).toUpperCase();
+  num[1] = parseInt(num[1], 10).toString(16).toUpperCase();
+  num[2] = parseInt(num[2], 10).toString(16).toUpperCase();
+
+  for (var i=0; i<num.length; i++) {
+    if (num[i].length === 1) {
+      num[i] = "0" + num[i];
+    }
+  }
+
+  str = "#" + num[0] + num[1] + num[2];
+
+  document.write("<span style='color:"+ str +"'>"+ str +"</span>");
+
+  </script>

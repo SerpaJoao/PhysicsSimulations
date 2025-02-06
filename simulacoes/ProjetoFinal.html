@@ -1,0 +1,121 @@
+<p>
+<div align="center">
+<canvas id="cnv" style="border: 1px solid;"
+ width="300" height="300">
+</canvas>
+</div>
+</p>
+
+<script>
+var somaesquerda = 0;
+var somadireita = 0;
+var wxi = -5; // limite inferior dos x
+var wxf = 5; // limite superior dos x
+var wyi = 0; // limite inferior dos y
+var wyf = 10; // limite superior dos y
+var x = wxi; // posição x
+var y = 9; // posição inicial y do lançamento
+var vy = 0 // velocidade na direção x
+var vx = 10; // velocidade inicila do lançamento na direção x
+var dt = 0.05; // intervalo de tempo
+var g = -9.8; // valor da aceleração da gravidade
+var ax = g/20; // aceleração na direção x
+var ay = g; // aceleração na direção y
+var sentidox = 1; // indicador do sentido de movimento
+var sentidoy = -1; // indicador do sentido de movimento
+var raio = 0.15; // raio da bola
+var red = 0.6; // redução da velocidade a cada colisão
+var totredx = 1; // redução total na direção x
+var totredy = 1; // redução total na direção y
+var limred = 0.01; // limite para redução (condição de parada)
+var horFim = 0; // indicador de fim na direção horizontal
+var verFim = 0; // indicador de fim na direção vetical
+function fixCoords(lctx,cw,ch,xmin,xmax,ymin,ymax) {
+ var m11 = cw/(xmax-xmin);
+ var m12 = 0;
+ var m21 = 0;
+ var m22 = ch/(ymin-ymax);
+ var dx = - cw*xmin/(xmax-xmin);
+ var dy = - ch*ymax/(ymin-ymax);
+ lctx.transform(m11,m12,m21,m22,dx,dy);
+ var esp = Math.max(m11,m22);
+ lctx.lineWidth = 1/esp;
+}
+
+ var startTime = Date.now();
+function passoBola() {
+ vx = vx + ax * dt;
+ x = x + vx * dt;
+ vy = vy + ay * dt;
+ y = y + vy * dt;
+ // bateu na parede da esquerda
+ if (x <= (wxi+raio)) {
+ sentidox = -sentidox;
+ x = wxi + raio;
+ totredx = totredx * red;
+  vx = -red*vx;
+  ax = -ax;
+  }
+  // bateu na parede da direita
+  if (x >= (wxf-raio)) {
+  sentidox = -sentidox;
+  x = wxf - raio;
+  totredx = totredx * red;
+  vx = -red*vx;
+  ax = -ax;
+  }
+  // bateu no chão
+  if (y <= raio) {
+  sentidoy = -sentidoy;
+  y = raio;
+  totredy = totredy * red;
+  vy = -red*vy;
+  }
+  // atingiu o máximo da trajetória
+  if ((sentidoy>0)&&(vy<=0)) {
+  sentidoy = -sentidoy;
+  vy = g * dt;
+  }
+  // movimento horizontal terminou
+  if ((vx<0)&&(sentidox>0)||(vx>0)&&(sentidox<0)) {
+  ax = 0;
+  vx = 0;
+  horFim = 1;
+  }
+  // movimento vertical terminou
+  if (totredy<limred) {
+  vy = 0;
+  verFim = 1;
+  }
+  if ((horFim)&&(verFim)) {
+  y = raio;
+  clearInterval(intervalo);
+  }
+  ctx.beginPath();
+  ctx.arc(x,y,raio,0,2*Math.PI,true);
+  ctx.fill();
+ }
+ // bateu na parede da esquerda
+ if (x <= (wxi+raio)) {
+ somaesquerda = somaesquerda + 1;
+  }
+   //bateu na parede da direita
+  if (x >= (wxf-raio)) {
+  somadireita = somadireita + 1;
+  }
+
+ var ctx = document.getElementById('cnv').getContext('2d');
+ fixCoords(ctx,300,300,wxi,wxf,wyi,wyf);
+ var intervalo = setInterval("passoBola()", 100); //100 = velocidade da trajetória na tela
+  var tempo = Date.now() - startTime;
+ document.write(tempo + "<br>");
+ document.write(somaesquerda + somadireita);
+ </script>
+
+ <p>
+ <div align="center" style="margin-top:1em">
+ <i>t</i> = <input type = "text" size = "5" value ="" id="tempo" size="3" disabled/>
+ </div>
+ </p>
+
+ <script>

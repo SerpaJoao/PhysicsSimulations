@@ -1,0 +1,16 @@
+<script>
+
+  var v = [0, 3, 11, 20, 24, 30, 48, 50];
+  var sm = 0;
+  for (var i=0; i<v.length; i++) {
+    sm += v[i];
+  }
+  var vmed = sm/(v.length);
+  var sm1 = 0;
+  for (var i=0; i<v.length; i++) {
+    sm1 += (v[i] - vmed)*(v[i] - vmed);
+  }
+  var vrms = (Math.sqrt(sm1))/(v.length);
+  document.write("vrms = " + vrms.toFixed(2) + " m/s" + "<br>"); //6.2318
+
+  </script>

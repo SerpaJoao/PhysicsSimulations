@@ -1,0 +1,14 @@
+<script>
+
+  var input = window.prompt("Escreva uma frase");
+  var word = input.split(" ");
+
+  var storageMatrix = new Array(15);
+  storageMatrix.fill(0)
+  for (var i=0; i<word.length; i++) {
+    storageMatrix[word[i].length - 1]++;
+  }
+
+  document.write(storageMatrix);
+
+</script>

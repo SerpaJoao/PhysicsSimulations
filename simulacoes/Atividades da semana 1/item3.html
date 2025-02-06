@@ -1,0 +1,22 @@
+<script>
+
+  //Resolução dos exercícios da semana 1
+  //Exercício 3 Campo elétrico
+
+  var k = 8.99e9;
+  var q = 1.602e-19;
+  var x = 1.00e-9;
+  var y = 2.00e-9;
+  var z = 3.00e-9;
+
+  var cir = k*q/(Math.pow(x*x + y*y + z*z, 3/2));
+
+  var ex = x*cir;
+  var ey = y*cir;
+  var ez = z*cir;
+
+  document.write("<br><i>Ex</i> = " + ex.toPrecision(3) + " N/C ");
+  document.write("<br><i>Ey</i> = " + ey.toPrecision(3) + " N/C ");
+  document.write("<br><i>Ez</i> = " + ez.toPrecision(3) + " N/C ");
+
+  </script>

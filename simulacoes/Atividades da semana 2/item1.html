@@ -1,0 +1,13 @@
+<script>
+
+  var input = window.prompt("Digite abaixo um ângulo em radianos. Entre apenas com valores decimais!");
+  var angRad = parseFloat(input);
+  if (isNaN(angRad)) {
+    window.alert("Entrada inválida. Tente novamente!");
+  }
+  else {
+    var txt = angRad + " rad equivale a " + angRad*180/Math.PI + " ° ";
+    window.alert(txt);
+      }
+
+  </script>

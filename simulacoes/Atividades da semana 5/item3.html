@@ -1,0 +1,63 @@
+<script>
+//Matriz A
+var mA = 3;
+var nA = mA;
+var matA = [];
+for (var i=0; i<mA; i++) matA[i] = [];
+matA[0][0] = 1;  matA[0][1] = 0;  matA[0][2] = 0;
+matA[1][0] = 1;  matA[1][1] = 1;  matA[1][2] = 0;
+matA[2][0] = 0;  matA[2][1] = 1;  matA[2][2] = 0;
+
+//Matriz B
+var mB = 3;
+var nB = mB;
+var matB = [];
+for (var i=0; i<mB; i++) matB[i] = [];
+matB[0][0] = -1;  matB[0][1] = 0;  matB[0][2] = -1;
+matB[1][0] = -3;  matB[1][1] = 1;  matB[1][2] = -2;
+matB[2][0] = 0;   matB[2][1] = 0;  matB[2][2] = 0;
+
+//Soma das matrizes
+var mC = mA;
+var nC = nB;
+var matC = [];
+for (var i=0; i<mC; i++) matC[i] = [];
+for (var i=0; i<mA; i++)
+  for (var j=0; j<nB; j++)
+      matC[i][j] = matA[i][j] + matB[i][j];
+
+      document.write("<pre>");
+        for (var i=0; i<mA; i++) {
+          for (var j=0; j<nB; j++) document.write(matC[i][j] + " &nbsp;&nbsp; ");
+          document.write("<br>");
+        }
+        document.write("</pre>");
+
+</script>
+
+<script>
+
+  //Matriz A
+  var mA = 3;
+  var nA = 2;
+  var matA = [];
+  for (var i=0; i<mA; i++) matA[i] = [];
+  matA[0][0] = 1;  matA[0][1] = 0;
+  matA[1][0] = 1;  matA[1][1] = 1;
+  matA[2][0] = 0;  matA[2][1] = 1;
+
+  //Matriz transposta
+  var matC = [];
+  for (var i=0; i<nA; i++) matC[i] = [];
+  for (var i=0; i<nA; i++)
+    for (var j=0; j<mA; j++)
+        matC[i][j] = matA[j][i];
+
+        document.write("<pre>");
+          for (var i=0; i<nA; i++) {
+            for (var j=0; j<mA; j++) document.write(matC[i][j] + " &nbsp;&nbsp; ");
+            document.write("<br>");
+          }
+          document.write("</pre>");
+
+        </script>

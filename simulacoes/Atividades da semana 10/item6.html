@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+</head>
+<input type="button" onclick="começa();" value="começa" />
+<input type="button" onclick="para();" value="para" />
+<br><br> <i>v<sub>0</sub></i> = <input type="text" id="valor_v0" /> (m/s)
+<br> <span>&#952;</span> = <input type="text" id="valor_theta" /> (rad)
+<br><br><div id="cenario" style="margin-left: 2cm; border: 1px solid black;
+  width: 400; height: 300;">
+    <div style="position: relative; left: 0; top: 290">*</div>
+</div>
+
+<script>
+    var str = "";
+    const x0 = 0;
+    const y0 = 0;
+    const dt = 0.01;
+    const a = 9.8;
+    var t = 0;
+    var timer = null
+
+    function atualizaPosição() {
+        var ang = document.getElementById('valor_theta').value;
+        var vi = document.getElementById('valor_v0').value;
+        var x = 0;
+        var y = 0;
+
+        t += dt;
+        x = x0 + (vi * Math.cos(ang) * t);
+        y = y0 + (vi * Math.sin(ang) * t - (1 / 2) * a * t * t);
+
+
+        return {
+            "x": x,
+            "y": y
+        }
+    }
+
+    function mostra(x, y) {
+        var cenario = document.getElementById('cenario')
+
+        str = `<div style = "position: relative; left: ${x}; top: ${290 - y}">*</div>`;
+        cenario.innerHTML = str;
+    }
+
+    function atualiza() {
+        var coord = atualizaPosição();
+
+        if (coord.x >= 400 || coord.y >= 300 || coord.y <= 0) {
+
+            clearInterval(timer)
+
+        } else {
+
+            mostra(coord.x, coord.y);
+
+        }
+    }
+
+    function para() {
+      clearInterval(timer)
+    }
+
+    function começa() {
+        timer = setInterval("atualiza();", dt)
+    }
+</script>
+<html>

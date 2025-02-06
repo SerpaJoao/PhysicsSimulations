@@ -1,0 +1,37 @@
+<p>
+    <textarea id='inarea'>
+</textarea>
+</p>
+<p><input type='button' value='GRAFICO' onClick='formataTabela()'>
+    <p>
+        <textarea rows='' id='outarea' cols=''>
+</textarea>
+    </p>
+    <script>
+        function formataTabela() {
+            var intxt = document.getElementById('inarea').value;
+            var dados = intxt.split(",");
+            var l = "";
+            var maiorNumero = parseInt(dados[0]);;
+
+            for (var i = 0; i < dados.length; i++) {
+                var x = parseInt(dados[i]);
+
+                if (x > maiorNumero) {
+                    maiorNumero = x;
+                }
+
+                for (var j = 0; j < x; j++) {
+                    if (j !== x - 1) {
+                        l += "*"
+                    } else {
+                        l += "*\n"
+                    }
+                }
+            }
+            document.getElementById("outarea").rows = dados.length + 1;
+            document.getElementById("outarea").cols = maiorNumero + 5;
+
+            document.getElementById("outarea").value = l;
+        }
+    </script>

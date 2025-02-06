@@ -1,0 +1,37 @@
+<script>
+
+  var opcao1 = window.confirm("Deseja converter graus centígrados (°C) para kelvin (K)?");
+  if (opcao1 == true) {
+    var input1 = window.prompt("Digite a temperatura em graus centígrados");
+    var grauC = parseFloat(input1);
+    if (isNaN(grauC)) {
+      window.alert("Entrada inválida. Tente novamente!");
+    }
+    else {
+      var a = grauC + 273.15;
+      var txt1 = grauC + " °C equivale a "
++ a + " K ";
+      window.alert(txt1);
+    }
+  }
+  else {
+    var opcao2 = window.confirm("Deseja converter kelvin (K) para graus centígrados (°C)?");
+    if (opcao2 == false) {
+      var input2 = "Não há outras opções. Tente novamente!";
+      window.alert(input2);
+    }
+    else {
+      var opcao3 = window.prompt("Digite a temperatura em kelvin");
+      var grauK = parseFloat(opcao3);
+      if (isNaN(grauK)) {
+        window.alert("Entrada inválida. Tente novamente!");
+      }
+      else {
+        var b = grauK - 273.15;
+        var txt2 = grauK + " K equivale a "
++ b + " °C ";
+        window.alert(txt2);
+     }
+    }
+  }
+  </script>

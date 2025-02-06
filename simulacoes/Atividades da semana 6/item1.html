@@ -1,0 +1,14 @@
+<script>
+
+  function volume(objeto, dim) {
+    if (objeto == "esfera") {
+      return (4/3)*(Math.PI)*(Math.pow(dim, 3));
+    }
+    else if (objeto == "cubo") {
+      return Math.pow(dim, 3);
+    }
+    else ("");
+  }
+  document.write(volume("cubo", 2).toFixed(2) + " \u33A5");
+
+</script>

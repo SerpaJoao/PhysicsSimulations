@@ -1,0 +1,31 @@
+<script>
+
+  var y0 = parseFloat(prompt("Posição inicial:"));
+  var y = y0;
+  var t = 0;
+  var v0 = 0; //Partindo do repouso
+  var a = -9.8;
+  while (y>0) {
+    y = y0 + v0*t + a*t*t/2;
+    document.write("<i>t</i> = " + t.toFixed(2) + "" );
+    document.write("<i>x</i> = " + y.toFixed(2) + "<br>");
+    t = t + 0.1;
+  }
+
+  </script>
+
+  <script>
+
+    var y0 = parseFloat(prompt("Posição inicial:"));
+    var y = y0;
+    var t = 0;
+    var v0 = 0; //Partindo do repouso
+    var a = -9.8;
+    do {
+      y = y0 + v0*t + a*t*t/2;
+      document.write("<i>t</i> = " + t.toFixed(2) + "" );
+      document.write("<i>x</i> = " + y.toFixed(2) + "<br>");
+      t = t + 0.1;
+    }   while (y>0);
+
+    </script>

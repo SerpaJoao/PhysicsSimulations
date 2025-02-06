@@ -1,0 +1,27 @@
+<script>
+  var g = 9.8;
+  function randomAngle(min, max) {
+    angdegree = Math.floor(Math.random() * (max - min + 1) ) + min;
+  } randomAngle(30, 60)//Válido para valores inteiros apenas?
+    var angrad = (angdegree*Math.PI/180);
+  function velocity(min, max) {
+    v = Math.floor(Math.random() * (max - min + 1) ) + min;
+  } velocity(5, 15)
+    var v0 = v.toFixed(1);
+
+// Resolução
+// t = 2*v0*sin(ang)/g
+// h = v0**2*(sin(ang))**2/2*g;
+// x = v0**2*(sin(2*ang))/g;
+  var t = 2*v0*Math.sin(angrad)/g;
+  var h = (Math.pow(v0, 2)*Math.pow((Math.sin(angrad)), 2))/(2*g);
+  var x = Math.pow(v0, 2)*(Math.sin(2*angrad))/g
+
+  var str = "<p>Em um lançamento oblíquo, um projétil lançado a um ângulo de \
+  " +angdegree+ " graus com uma velocidade inicial de " +v0+ " m/s vai atingir \
+  uma altura máxima de " +h.toFixed(1)+ " m e terá um alcance de " +x.toFixed(1)+ "  m. O tempo de \
+  vôo é de " +t.toFixed(1)+ " s.</p>";
+
+document.write(str);
+
+</script>

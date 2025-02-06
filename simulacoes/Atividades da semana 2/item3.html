@@ -1,0 +1,48 @@
+<script>
+
+var vetorx1 = window.prompt("Digite a componente x do primeiro vetor");
+var x1 = parseFloat(vetorx1);
+var vetory1 = window.prompt("Digite a componente y do primeiro vetor");
+var y1 = parseFloat(vetory1);
+var vetorz1 = window.prompt("Digite a componente z do primeiro vetor");
+var z1 = parseFloat(vetorz1);
+
+var vetorx2 = window.prompt("Digite a componente x do segundo vetor");
+var x2 = parseFloat(vetorx2);
+var vetory2 = window.prompt("Digite a componente y do segundo vetor");
+var y2 = parseFloat(vetory2);
+var vetorz2 = window.prompt("Digite a componente z do segundo vetor");
+var z2 = parseFloat(vetorz2);
+
+var opcao1 = window.confirm("Deseja calcular o produto escalar?");
+if (opcao1 == true) {
+  var prodesc = x1*x2 + y1*y2 + z1*z2;
+  if (isNaN(prodesc)) {
+    window.alert("Entrada inválida. Tente novamente!");
+  }
+  else {
+    window.alert("O produto escalar é " + prodesc);
+  }
+}
+else {
+  var opcao2 = window.confirm("Deseja calcular o produto vetorial?");
+  if (opcao2 == false) {
+    window.alert("Não há outras opções. Tente novamente!");
+  }
+  else {
+    var prodveti = y1*z2 - y2*z1;
+    var prodvetj = z1*x2 - z2*x1;
+    var prodvetk = x1*y2 - x2*y1;
+    var teste = x1*x2 + y1*y2 + z1*z2;
+    if (isNaN(teste)) {
+      window.alert("Entrada inválida. Tente novamente!");
+    }
+    else {
+      var txt = "O produto vetorial é " + "(" + prodveti + ")" + "i"
++ "+(" + prodvetj + ")" + "j" + "+(" + prodvetk + ")" + "k" ;
+       window.alert(txt);
+    }
+  }
+}
+
+  </script>

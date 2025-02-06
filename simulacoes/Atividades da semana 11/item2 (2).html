@@ -1,0 +1,105 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+<p style="text-align:center">
+<canvas id="cnv" width="150" height="300"
+style="border: 1px solid black">
+</canvas>
+</div>
+
+<script>
+
+function trans(x, y, escala_x, escala_y, dx, dy) {
+  var x_ = escala_x * x + dx;
+  var y_ = escala_y * y + dy;
+  return[x_, y_];
+}
+
+  function config_escala(cnv, x1, x2, y1, y2) {
+
+    var escala_x = cnv.width / (x2 - x1);
+    var dx = - escala_x * x1;
+    var escala_y = -cnv.height / (y2 - y1);
+    var dy = - escala_y * y2;
+
+    var ctx = cnv.getContext("2d");
+    ctx.setTransform(escala_x, 0, 0, escala_y, dx, dy);
+  }
+
+      function desenha() {
+
+        ctx.clearRect(x1, y1, x2 - x1, y2 - y1);
+
+  //haste
+  ctx.lineWidth = 0.01;
+  ctx.beginPath();
+  ctx.moveTo(0, H);
+  ctx.lineTo(0, H - L - 0.25);//y já está invertido
+  ctx.stroke();
+
+  //arco
+  ctx.lineWidth = 0.01;
+  ctx.beginPath();
+  const centro = 1.5 * Math.PI;
+  ctx.arc(0, H, L, centro - A, centro + A, false);
+  ctx.stroke();
+
+  //corda
+  ctx.lineWidth = 0.02;
+  ctx.beginPath();
+  ctx.moveTo(0, H);
+  ctx.lineTo(x, y);
+  ctx.stroke();
+
+  //bola
+  ctx.beginPath();
+  ctx.arc(x, y, 0.1, 0, 2 * Math.PI, true);
+  ctx.fill();
+
+    }
+
+      function calcula_fisica() {
+
+        var t = (Date.now() - t_ini) / 1000;
+        var theta = A * Math.cos(omega * t);
+         x = L * Math.sin(theta);
+         y = H - L * Math.cos(theta);
+
+    }
+      function atualiza() {
+
+          calcula_fisica();
+          desenha();
+
+    }
+
+  const H = 2;//altura da haste do pendulo
+  const L = 1.5;//comprimento da corda do pendulo
+  const A = 10*Math.PI / 180;
+  const g = 9.8;
+
+  var t_ini = Date.now();
+  var omega = Math.sqrt(g / L);
+  var x;
+  var y;
+
+
+  const x1 = -0.5;
+  const x2 = 0.5;
+  const y1 = 0;
+  const y2 = 2;
+
+    var cnv = document.getElementById("cnv");
+    var ctx = cnv.getContext("2d");
+
+    config_escala(cnv, x1, x2, y1, y2);
+
+    var int = setInterval("atualiza();", 16);
+
+      </script>
+
+    </body>
+    </html>

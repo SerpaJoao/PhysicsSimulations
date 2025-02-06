@@ -1,0 +1,9 @@
+<script>
+
+  function potencial(x, y, z) {
+    var v = ((8.99e9)*(1.6e-19))/(Math.sqrt(x*x + y*y + z*z));
+    return v*1e12;
+  }
+  document.write("<br>" + potencial(12, 20, 6).toFixed(2) + " pV");
+
+  </script>

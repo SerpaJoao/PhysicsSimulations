@@ -1,0 +1,33 @@
+<p>
+    <table style='width:500; margin:auto' cellpadding='3' cellspacing='0' border='1'>
+        <script>
+            var aluno = new Array(5);
+            aluno[0] = ["08234045", 10, 9, 10, 0];
+            aluno[1] = ["08134033", 8, 7, 3, 0];
+            aluno[2] = ["09147001", 9, 7, 5, 0];
+            aluno[3] = ["09147076", 9, 6, 9, 0];
+            aluno[4] = ["08247804", 7, 7, 7, 0]
+
+            var str = "<tr><th>" + "Matrícula" + "</th>";
+            str += "<th>" + "P1" + "</th>";
+            str += "<th>" + "P2" + "</th>";
+            str += "<th>" + "P3" + "</th>";
+            str += "<th>" + "Média" + "</th>";
+
+            for (var lin = 0; lin < aluno.length; lin++) {
+                str += "<tr>";
+                str += "<th>" + aluno[lin][0] + "</th>";
+                for (var col = 1; col < aluno[lin].length; col++) {
+                    if (col === aluno[lin].length - 1) {
+                        var media = (aluno[lin][1] + aluno[lin][2] + aluno[lin][3]) / 3;
+                        str += "<td style='text-align:center'>" + media.toFixed(1) + "</td>";
+                    } else {
+                        str += "<td style='text-align:center'>" + aluno[lin][col].toFixed(1) + "</td>";
+                    }
+                }
+                str += "</tr>";
+            }
+            document.write(str);
+        </script>
+    </table>
+</p>

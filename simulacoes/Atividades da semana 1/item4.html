@@ -1,0 +1,19 @@
+<script>
+
+  //Resolução dos exercícios da semana 1
+  //Exercício 4 Distribuição gaussiana
+
+  var a = 10;
+  var x0 = 5.0;
+  var sigma = x0/4;
+  var x = 2.5;
+  var e = Math.E;
+  var p = (-(x - x0)*(x - x0))/(2*sigma*sigma);
+
+  var exp = Math.pow(e, p);
+
+  var g = a*exp;
+
+  document.write("<br><i>g</i> = " + g.toFixed(1));
+
+  </script>

@@ -1,0 +1,19 @@
+<script>
+
+  //Resolução dos exercícios da semana 1
+  //Exercício 2 Onda transversal
+
+  var y0 = 1.00e-2;
+  var f = 1.00e5;
+  var lambda = 0.033;
+  var x = 2.00;
+  var t = 2.00;
+  var pi = Math.PI;
+
+  var cos = Math.cos(2*pi*(x/lambda - f*t));
+
+  var y = y0*cos;
+
+  document.write("<br><i>y</i> = " + y.toFixed(4) + " m ");
+
+  </script>

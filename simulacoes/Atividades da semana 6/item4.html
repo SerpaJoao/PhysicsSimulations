@@ -1,0 +1,20 @@
+<script>
+
+  var v1 = [];
+  var v2 = [];
+  var sum = 0;
+  var modv1 = 0;
+  var modv2 = 0;
+
+  function angVet(v1, v2) {
+    for (i=0; i<3; i++) {
+      sum += v1[i]*v2[i];
+      modv1 += (v1[i])*(v1[i]);
+      modv2 += (v2[i])*(v2[i]);
+    }
+    return Math.acos(sum/Math.sqrt(modv1*modv2))*(180/Math.PI)
+  }
+
+  document.write("<br>" + angVet([1, -4, 8], [4, 5, 6]).toFixed(1) + "°")
+
+  </script>

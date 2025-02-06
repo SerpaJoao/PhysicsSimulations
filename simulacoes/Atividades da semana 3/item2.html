@@ -1,0 +1,48 @@
+<script>
+
+    var a = 0.10;
+    var f = 2;
+    var c = 2;
+    var pi = Math.PI;
+    var e = Math.E;
+    for (var t=0; t<=2; t=t+0.1) {
+      x = a*(Math.cos(2*pi*f*t))*(Math.pow(e, -c*t));
+      document.write("<i>t</i> = " + t.toFixed(2) + "" );
+      document.write("<i>x</i> = " + x.toFixed(4) + "<br>");
+    }
+
+    </script>
+
+    <script>
+
+      var t = 0
+      var a = 0.10;
+      var f = 2;
+      var c = 2;
+      var pi = Math.PI;
+      var e = Math.E;
+      while (t<=2) {
+          x = a*(Math.cos(2*pi*f*t))*(Math.pow(e, -c*t));
+          document.write("<i>t</i> = " + t.toFixed(2) + "" );
+          document.write("<i>x</i> = " + x.toFixed(4) + "<br>");
+          t = t + 0.1;
+      }
+
+      </script>
+
+      <script>
+
+        var t = 0
+        var a = 0.10;
+        var f = 2;
+        var c = 2;
+        var pi = Math.PI;
+        var e = Math.E;
+        do {
+          x = a*(Math.cos(2*pi*f*t))*(Math.pow(e, -c*t));
+          document.write("<i>t</i> = " + t.toFixed(2) + "" );
+          document.write("<i>x</i> = " + x.toFixed(4) + "<br>");
+          t = t + 0.1;
+        } while (t<=2);
+
+        </script>
